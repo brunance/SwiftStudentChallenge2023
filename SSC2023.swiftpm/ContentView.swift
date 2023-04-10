@@ -1,11 +1,10 @@
 import SwiftUI
 import SpriteKit
 
-// A sample SwiftUI creating a GameScene and sizing it
-// at 300x400 points
 struct ContentView: View {
+
     var scene: SKScene {
-        let scene = boxScene()
+        let scene = GravityScene()
         scene.size = CGSize(width: 300, height: 400)
         scene.scaleMode = .fill
         return scene

@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import SpriteKit
 
-class boxScene: SKScene {
+class GravityScene: SKScene {
     override func didMove(to view: SKView) {
         physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
     }
