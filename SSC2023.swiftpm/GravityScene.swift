@@ -10,6 +10,7 @@ import SwiftUI
 import SpriteKit
 
 class GravityScene: SKScene {
+    
     override func didMove(to view: SKView) {
         physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
     }

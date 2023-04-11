@@ -9,12 +9,20 @@ import SwiftUI
 
 struct MenuView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            VStack {
+                Text("Oi lindos")
+                NavigationLink(destination: ContentView()) {
+                    Text("Hey")
+                }
+            }
+        }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
-}
 
-struct MenuView_Previews: PreviewProvider {
-    static var previews: some View {
-        MenuView()
-    }
+//    struct MenuView_Previews: PreviewProvider {
+//        static var previews: some View {
+//            MenuView()
+//        }
+//    }
 }
