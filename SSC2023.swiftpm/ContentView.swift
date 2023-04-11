@@ -12,10 +12,15 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
-            Text("amoooo")
-                .frame(width: 900, height: 200)
-                .background(.cyan)
-                .padding(.bottom, 100)
+            HStack {
+                Image("teste")
+                    .padding(.trailing, 40)
+                Text("amoooo")
+                    .frame(width: 600, height: 250)
+                    .background(.cyan)
+            }
+            .padding(.bottom, 50)
+
             SpriteView(scene: scene)
                 .frame(width: 900, height: 900, alignment: .bottom)
                 .ignoresSafeArea()
