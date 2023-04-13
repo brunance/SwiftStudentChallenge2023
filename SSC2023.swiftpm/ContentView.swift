@@ -13,9 +13,12 @@ struct ContentView: View {
     var body: some View {
         VStack {
             HStack {
-                Image("teste")
+                Image("surprised1")
+                    .resizable()
+                    .frame(width: 250, height: 250)
                     .padding(.trailing, 40)
                 Text("amoooo")
+                    .font(getFont(size: 30))
                     .frame(width: 600, height: 250)
                     .background(.cyan)
             }
@@ -25,10 +28,20 @@ struct ContentView: View {
                 .frame(width: 900, height: 900, alignment: .bottom)
                 .ignoresSafeArea()
                 .navigationBarBackButtonHidden()
-        }
-        //.padding(.top, 300)
+        } 
+    }
 
+    func getFont(size: CGFloat) -> Font {
 
+        let cfURL = Bundle.main.url( forResource: "Silkscreen-Regular", withExtension:
+        "ttf")! as CFURL
 
+        CTFontManagerRegisterFontsForURL(cfURL,CTFontManagerScope.process,nil)
+
+        let font = Font.custom("Silkscreen-Regular", size: size)
+
+        return font
     }
 }
+
+
