@@ -24,8 +24,6 @@ class GravityScene: SKScene {
         guard let touch = touches.first else { return }
         let location = touch.location(in: self)
         let grass = SKSpriteNode(texture:  SKTexture(imageNamed: "grass"), size: CGSize(width: 100, height: 100))
-        //let box = SKSpriteNode(color: .red, size: CGSize(width: 100, height: 100))
-        //grass
         grass.position = location
         grass.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 100, height: 100))
         addChild(grass)

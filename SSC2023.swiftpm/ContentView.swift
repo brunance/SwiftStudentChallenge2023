@@ -5,7 +5,7 @@ struct ContentView: View {
 
     var scene: SKScene {
         let scene = GravityScene()
-        scene.size = CGSize(width: 900, height: 900)
+        scene.size = CGSize(width: 900, height: 800)
         scene.scaleMode = .fill
         return scene
     }
@@ -25,16 +25,20 @@ struct ContentView: View {
             .padding(.bottom, 50)
 
             SpriteView(scene: scene)
-                .frame(width: 900, height: 900, alignment: .bottom)
+                .frame(width: 900, height: 800, alignment: .bottom)
                 .ignoresSafeArea()
                 .navigationBarBackButtonHidden()
-        } 
+
+            NavigationLink(destination: MenuView()){
+                Text("amo todos voces")
+            }
+        }
     }
 
     func getFont(size: CGFloat) -> Font {
 
         let cfURL = Bundle.main.url( forResource: "Silkscreen-Regular", withExtension:
-        "ttf")! as CFURL
+                                        "ttf")! as CFURL
 
         CTFontManagerRegisterFontsForURL(cfURL,CTFontManagerScope.process,nil)
 
