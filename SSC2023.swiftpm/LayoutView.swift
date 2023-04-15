@@ -6,12 +6,9 @@ struct TextData {
     var emotion: String
 
     public static var all: [TextData] = [
-        .init(text: "let's start with the basics, drag the blocks bellow to the respective empty spaces at the bottom of the screen.",
-              emotion: "serious"),
-        .init(text: "Second Text baby!",
-              emotion: "happy"),
-        .init(text: "Third Text baby!",
-              emotion: "surprised"),
+        .init(text: "let's start with the basics, drag the grass block bellow to the respective empty spaces at the bottom of the screen.", emotion: "serious"),
+        .init(text: "Second Text baby!", emotion: "surprised"),
+        .init(text: "If you're lost and want to read these instructions again, simply press this button one more time for me to repeat what I just said.", emotion: "happy"),
     ]
 }
 
@@ -41,9 +38,10 @@ struct LayoutView: View {
                     Image("textframe")
                         .resizable()
                         .frame(width: 600, height: 250)
+
                     Text(getCurrentText())
-                        .font(CustomFont().getFont(size: 30))
-                        .frame(width: 550, height: 250, alignment: .leading)
+                        .font(CustomFont().getFont(size: 25))
+                        .frame(width: 550, height: 250, alignment: .center)
                         .onAppear {
                             let totalTime = 8.0
                             let charCount = Double(TextData.all[self.currentTextIndex].text.count)
@@ -55,11 +53,21 @@ struct LayoutView: View {
                             }
                             timer.fire()
                         }
-                    Button("Próximo") {
-                        self.currentTextIndex = (self.currentTextIndex + 1) % TextData.all.count
-                        self.currentTextCount = 0
-                        characterAnimation.runAnim(emotion: TextData.all[currentTextIndex].emotion)
+
+                    HStack {
+                        Button(action: {
+                            self.currentTextIndex = (self.currentTextIndex + 1) % TextData.all.count
+                            self.currentTextCount = 0
+                            characterAnimation.runAnim(emotion: TextData.all[currentTextIndex].emotion)
+                        }){
+                            Image(systemName: "play")
+                                .frame(width: 50, height: 50)
+                                .background(.cyan)
+                        }
+                        .frame(width: 50, height: 50)
                     }
+                    .padding(.leading, 500)
+                    .padding(.top, 150)
                 }
             }
             .padding(.bottom, 30)
@@ -88,5 +96,3 @@ struct LayoutView: View {
         return String(currentText[..<endIndex])
     }
 }
-
-

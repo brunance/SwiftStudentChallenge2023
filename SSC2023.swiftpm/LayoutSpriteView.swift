@@ -68,24 +68,13 @@ class LayoutSpriteView: SKScene {
         }
     }
 
-//    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        for touch in touches {
-//            touchLocation = touch.location(in: self)
-//            if grassy.contains(touchLocation){
-//                grassy.position.x = (touchLocation.x)
-//                grassy.position.y = (touchLocation.y)
-//            }
-//        }
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        guard let touch = touches.first else { return }
+//        let location = touch.location(in: self)
+//        let grass = SKSpriteNode(texture:  SKTexture(imageNamed: "grass"), size: CGSize(width: 100, height: 100))
+//        grass.position = location
+//        grass.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 100, height: 100))
+//        addChild(grass)
 //    }
 
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let touch = touches.first else { return }
-        let location = touch.location(in: self)
-
-
-        //        let grass = SKSpriteNode(texture:  SKTexture(imageNamed: "grass"), size: CGSize(width: 100, height: 100))
-        //        grass.position = location
-        //        grass.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 100, height: 100))
-        //        addChild(grass)
-    }
 }

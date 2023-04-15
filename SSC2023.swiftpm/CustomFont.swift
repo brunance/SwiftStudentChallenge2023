@@ -9,16 +9,10 @@ import Foundation
 import SwiftUI
 
 struct CustomFont {
-
     func getFont(size: CGFloat) -> Font {
-
-        let cfURL = Bundle.main.url( forResource: "Silkscreen-Regular", withExtension:
-                                        "ttf")! as CFURL
-
+        let cfURL = Bundle.main.url( forResource: "Silkscreen-Regular", withExtension: "ttf")! as CFURL
         CTFontManagerRegisterFontsForURL(cfURL,CTFontManagerScope.process,nil)
-
         let font = Font.custom("Silkscreen-Regular", size: size)
-
         return font
     }
 }
