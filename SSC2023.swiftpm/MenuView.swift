@@ -12,7 +12,7 @@ struct MenuView: View {
         NavigationView {
             VStack {
                 Text("Oi lindos")
-                NavigationLink(destination: LayoutView()) {
+                NavigationLink(destination: AboutAssetView()) {
                     Text("Hey")
                 }
             }

@@ -1,18 +1,7 @@
 import SwiftUI
 import SpriteKit
 
-struct TextData {
-    var text: String
-    var emotion: String
-
-    public static var all: [TextData] = [
-        .init(text: "let's start with the basics, drag the grass block bellow to the respective empty spaces at the bottom of the screen.", emotion: "serious"),
-        .init(text: "Second Text baby!", emotion: "surprised"),
-        .init(text: "If you're lost and want to read these instructions again, simply press this button one more time for me to repeat what I just said.", emotion: "happy"),
-    ]
-}
-
-struct LayoutView: View {
+struct AssetView: View {
 
     @State private var value = 0
     @State private var newBehavior = false
@@ -20,7 +9,7 @@ struct LayoutView: View {
     @State private var currentTextCount = 0
 
     var scene1: SKScene {
-        let scene1 = LayoutSpriteView()
+        let scene1 = AssetSpriteView()
         scene1.size = CGSize(width: 900, height: 800)
         scene1.scaleMode = .fill
         return scene1
@@ -44,10 +33,10 @@ struct LayoutView: View {
                         .frame(width: 550, height: 250, alignment: .center)
                         .onAppear {
                             let totalTime = 8.0
-                            let charCount = Double(TextData.all[self.currentTextIndex].text.count)
+                            let charCount = Double(TextData.assetText[self.currentTextIndex].text.count)
                             let interval = totalTime / charCount
                             let timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { _ in
-                                if self.currentTextCount < TextData.all[self.currentTextIndex].text.count {
+                                if self.currentTextCount < TextData.assetText[self.currentTextIndex].text.count {
                                     self.currentTextCount += 1
                                 }
                             }
@@ -56,9 +45,9 @@ struct LayoutView: View {
 
                     HStack {
                         Button(action: {
-                            self.currentTextIndex = (self.currentTextIndex + 1) % TextData.all.count
+                            self.currentTextIndex = (self.currentTextIndex + 1) % TextData.assetText.count
                             self.currentTextCount = 0
-                            characterAnimation.runAnim(emotion: TextData.all[currentTextIndex].emotion)
+                            characterAnimation.runAnim(emotion: TextData.assetText[currentTextIndex].emotion)
                         }){
                             Image(systemName: "play")
                                 .frame(width: 50, height: 50)
@@ -86,12 +75,12 @@ struct LayoutView: View {
                     .cornerRadius(30)
             }
 
-            NavigationLink("", destination:  MenuView(), isActive: $newBehavior)
+            NavigationLink("", destination:  AboutAssetView(), isActive: $newBehavior)
         }
     }
 
     func getCurrentText() -> String {
-        let currentText = TextData.all[self.currentTextIndex].text
+        let currentText = TextData.assetText[self.currentTextIndex].text
         let endIndex = currentText.index(currentText.startIndex, offsetBy: self.currentTextCount)
         return String(currentText[..<endIndex])
     }

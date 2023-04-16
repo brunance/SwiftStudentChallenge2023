@@ -15,6 +15,7 @@ class CharacterAnimation: SKScene {
     override func sceneDidLoad() {
         self.size = CGSize(width: 250, height: 250)
         self.scaleMode = .fill
+        self.backgroundColor = .clear
     }
 
     override func didMove(to view: SKView) {
@@ -55,6 +56,6 @@ class CharacterAnimation: SKScene {
                                       timePerFrame: 0.5 / TimeInterval(textures.count),
                                       resize: true,
                                       restore: true)
-        characterNode?.run(SKAction.repeat(action, count: 16))
+        characterNode?.run(SKAction.repeat(action, count: 18))
     }
 }
