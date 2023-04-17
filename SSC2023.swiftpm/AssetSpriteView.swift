@@ -12,7 +12,7 @@ import SpriteKit
 class AssetSpriteView: SKScene {
 
     let newTexture = SKTexture(imageNamed: "grass")
-    let background = SKSpriteNode(texture:  SKTexture(imageNamed: "background"), size: CGSize(width: 900, height: 900))
+    let background = SKSpriteNode(texture:  SKTexture(imageNamed: "backgroundSpriteView"), size: CGSize(width: 900, height: 900))
     var grassy = SKSpriteNode()
     var groundy = SKSpriteNode()
     var touchLocation = CGPoint()

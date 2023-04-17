@@ -18,71 +18,69 @@ struct AboutAssetView: View {
     
     var body: some View {
 
-        VStack {
 
-            ZStack {
 
-                SpriteView(scene: characterAnimation, options: [.allowsTransparency])
-                    .frame(width: 250, height: 250)
-                    .padding(.trailing, 653)
 
-                Image("textframe")
-                    .resizable()
-                    .frame(width: 910, height: 250)
+        ZStack {
 
+            Image("background1")
+
+            VStack {
                 ZStack {
+                    SpriteView(scene: characterAnimation, options: [.allowsTransparency])
+                        .frame(width: 250, height: 250)
+                        .padding(.trailing, 653)
 
-                    Text(getCurrentText())
-                        .font(CustomFont().getFont(size: 20))
-                        .onAppear {
-                            let totalTime = 8.0
-                            let charCount = Double(TextData.aboutAssetText[self.currentTextIndex].text.count)
-                            let interval = totalTime / charCount
-                            let timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { _ in
-                                if self.currentTextCount < TextData.aboutAssetText[self.currentTextIndex].text.count {
-                                    self.currentTextCount += 1
+                    Image("textframe")
+                        .resizable()
+                        .frame(width: 910, height: 250)
+
+                    ZStack {
+                        Text(getCurrentText())
+                            .font(CustomFont().getFont(size: 20))
+                            .onAppear {
+                                let totalTime = 8.0
+                                let charCount = Double(TextData.aboutAssetText[self.currentTextIndex].text.count)
+                                let interval = totalTime / charCount
+                                let timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { _ in
+                                    if self.currentTextCount < TextData.aboutAssetText[self.currentTextIndex].text.count {
+                                        self.currentTextCount += 1
+                                    }
                                 }
+                                timer.fire()
                             }
-                            timer.fire()
-                        }
-                    //.padding(.trailing, 90)
 
-                    HStack {
-                        Button(action: {
-                            self.currentTextIndex = (self.currentTextIndex + 1) % TextData.aboutAssetText.count
-                            self.currentTextCount = 0
-                            characterAnimation.runAnim(emotion: TextData.aboutAssetText[currentTextIndex].emotion)
-                        }){
-                            Image("textdone")
-                                .resizable()
-                                .frame(width: 25, height: 25)
-                                //.background(.cyan)
+                        HStack {
+                            Button(action: {
+                                self.currentTextIndex = (self.currentTextIndex + 1) % TextData.aboutAssetText.count
+                                self.currentTextCount = 0
+                                characterAnimation.runAnim(emotion: TextData.aboutAssetText[currentTextIndex].emotion)
+                            }){
+                                Image("textdone")
+                                    .resizable()
+                                    .frame(width: 25, height: 25)
+                            }
+                            .frame(width: 50, height: 50)
                         }
-                        .frame(width: 50, height: 50)
+                        .padding(.leading, 535)
+                        .padding(.top, 130)
                     }
-                    .padding(.leading, 535)
-                    .padding(.top, 130)
-
+                    .frame(width: 620, height: 200)
+                    .padding(.leading, 250)
+                    .padding(.top, 25)
                 }
-                .frame(width: 620, height: 200)
-                .padding(.leading, 250)
-                .padding(.top, 25)
 
+                Button(action: { newView = true }) {
+                    Image("button")
+                        .resizable()
+                        .frame(width: 100, height: 100)
+                }
+                .padding(.top, 50)
+                .navigationBarBackButtonHidden()
 
+                NavigationLink("", destination:  AssetView(), isActive: $newView)
             }
-
-            Button(action: { newView = true }) {
-                Image(systemName: "play.fill")
-                    .frame(width: 100, height: 100)
-                    .background(.black)
-                    .cornerRadius(30)
-            }
-            .padding(.top, 40)
-
-            NavigationLink("", destination:  AssetView(), isActive: $newView)
         }
-
-
     }
 
     func getCurrentText() -> String {
