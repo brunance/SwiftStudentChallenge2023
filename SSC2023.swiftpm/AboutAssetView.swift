@@ -17,12 +17,7 @@ struct AboutAssetView: View {
     var characterAnimation = CharacterAnimation()
     
     var body: some View {
-
-
-
-
         ZStack {
-
             Image("background1")
 
             VStack {
@@ -39,7 +34,7 @@ struct AboutAssetView: View {
                         Text(getCurrentText())
                             .font(CustomFont().getFont(size: 20))
                             .onAppear {
-                                let totalTime = 8.0
+                                let totalTime = 6.0
                                 let charCount = Double(TextData.aboutAssetText[self.currentTextIndex].text.count)
                                 let interval = totalTime / charCount
                                 let timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { _ in

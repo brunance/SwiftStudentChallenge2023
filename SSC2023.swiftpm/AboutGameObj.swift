@@ -1,26 +1,25 @@
+//
+//  AboutGameObj.swift
+//  SSC2023
+//
+//  Created by Bruno França do Prado on 17/04/23.
+//
+
+import Foundation
 import SwiftUI
 import SpriteKit
 
-struct AssetView: View {
-
-    @State private var value = 0
-    @State private var newView = false
+struct AboutGameObj: View {
     @State private var currentTextIndex = 0
     @State private var currentTextCount = 0
-
-    var scene: SKScene {
-        let scene = AssetSpriteView()
-        scene.size = CGSize(width: 900, height: 800)
-        scene.scaleMode = .fill
-        return scene
-    }
+    @State private var newView = false
 
     var characterAnimation = CharacterAnimation()
 
     var body: some View {
         ZStack {
-            Image("background3")
-            
+            Image("background1")
+
             VStack {
                 ZStack {
                     SpriteView(scene: characterAnimation, options: [.allowsTransparency])
@@ -36,10 +35,10 @@ struct AssetView: View {
                             .font(CustomFont().getFont(size: 20))
                             .onAppear {
                                 let totalTime = 6.0
-                                let charCount = Double(TextData.assetText[self.currentTextIndex].text.count)
+                                let charCount = Double(TextData.aboutGameObjText[self.currentTextIndex].text.count)
                                 let interval = totalTime / charCount
                                 let timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { _ in
-                                    if self.currentTextCount < TextData.assetText[self.currentTextIndex].text.count {
+                                    if self.currentTextCount < TextData.aboutGameObjText[self.currentTextIndex].text.count {
                                         self.currentTextCount += 1
                                     }
                                 }
@@ -48,9 +47,9 @@ struct AssetView: View {
 
                         HStack {
                             Button(action: {
-                                self.currentTextIndex = (self.currentTextIndex + 1) % TextData.assetText.count
+                                self.currentTextIndex = (self.currentTextIndex + 1) % TextData.aboutGameObjText.count
                                 self.currentTextCount = 0
-                                characterAnimation.runAnim(emotion: TextData.assetText[currentTextIndex].emotion)
+                                characterAnimation.runAnim(emotion: TextData.aboutGameObjText[currentTextIndex].emotion)
                             }){
                                 Image("textdone")
                                     .resizable()
@@ -65,34 +64,23 @@ struct AssetView: View {
                     .padding(.leading, 250)
                     .padding(.top, 25)
                 }
-                .padding(.bottom, 20)
-
-                SpriteView(scene: scene)
-                    .frame(width: 900, height: 800)
-                    .ignoresSafeArea()
-                    .navigationBarBackButtonHidden()
 
                 Button(action: { newView = true }) {
                     Image("button")
                         .resizable()
                         .frame(width: 100, height: 100)
                 }
-                .padding(.top, 20)
+                .padding(.top, 50)
+                .navigationBarBackButtonHidden()
 
-                NavigationLink("", destination:  AboutGameObj(), isActive: $newView)
+                NavigationLink("", destination:  GameObjView(), isActive: $newView)
             }
         }
     }
 
     func getCurrentText() -> String {
-        let currentText = TextData.assetText[self.currentTextIndex].text
+        let currentText = TextData.aboutGameObjText[self.currentTextIndex].text
         let endIndex = currentText.index(currentText.startIndex, offsetBy: self.currentTextCount)
         return String(currentText[..<endIndex])
-    }
-}
-
-struct AssetView_Previews: PreviewProvider {
-    static var previews: some View {
-        AssetView()
     }
 }

@@ -12,27 +12,28 @@ import SpriteKit
 class AssetSpriteView: SKScene {
 
     let newTexture = SKTexture(imageNamed: "grass")
-    let background = SKSpriteNode(texture:  SKTexture(imageNamed: "backgroundSpriteView"), size: CGSize(width: 900, height: 900))
+    let groundTexture = SKTexture(imageNamed: "ground")
+    let background = SKSpriteNode(texture: SKTexture(imageNamed: "backgroundSpriteView"), size: CGSize(width: 900, height: 900))
     var grassy = SKSpriteNode()
     var groundy = SKSpriteNode()
     var touchLocation = CGPoint()
     var nodeBeingDragged: SKNode?
     var nodesToChange: [SKNode] = []
-    var isBeingDragged = false
+    var isGrassBeingDragged = false
+    var isGroundBeingDragged = false
     var lastTouchLocation: CGPoint?
 
     override func didMove(to view: SKView) {
-        physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
         background.position = CGPoint(x: 450, y: 450)
         addChild(background)
 
         grassy = SKSpriteNode(texture:  SKTexture(imageNamed: "grass"), size: CGSize(width: 100, height: 100))
-        grassy.position = CGPoint(x: 600, y: 600)
+        grassy.position = CGPoint(x: 650, y: 600)
         grassy.zPosition = 5
         addChild(grassy)
 
         groundy = SKSpriteNode(texture:  SKTexture(imageNamed: "ground"), size: CGSize(width: 100, height: 100))
-        groundy.position = CGPoint(x: 300, y: 600)
+        groundy.position = CGPoint(x: 250, y: 600)
         groundy.zPosition = 5
         addChild(groundy)
 
@@ -60,49 +61,61 @@ class AssetSpriteView: SKScene {
         addChild(nodeFrame)
     }
 
-    //nova função touches moved
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
             let touchLocation = touch.location(in: self)
             let touchedNodes = nodes(at: touchLocation)
 
             for node in touchedNodes {
-                if node == grassy {
-                    isBeingDragged = true
+                if node == grassy  {
+                    isGrassBeingDragged = true
                 }
+
+                if node == groundy {
+                    isGroundBeingDragged = true
+                }
+
                 else if let spriteNode = node as? SKSpriteNode {
-                    if spriteNode == nodeBeingDragged {
+                    if spriteNode == nodeBeingDragged{
                         continue
                     }
-                    //Aqui é feita a verificação do nome, podes colocar pro second Row ter outra textura aqui :)
-                    if isBeingDragged && spriteNode.name == "blockTop"{
-                        spriteNode.texture = newTexture
+
+                    if isGrassBeingDragged{
+                        if spriteNode.name == "blockTop" && spriteNode != groundy{
+                            spriteNode.texture = newTexture
+                        }
+                    }
+
+                    if isGroundBeingDragged {
+                        if spriteNode.name == "blockBtm" && spriteNode != grassy{
+                            spriteNode.texture = groundTexture
+                        }
                     }
                 }
             }
 
-            // Atualiza a posição do nó grassy utilizando a última posição do toque registrado
-            if let lastTouchLocation = lastTouchLocation {
-                let touchDelta = touchLocation - lastTouchLocation
-                grassy.position =  grassy.position + touchDelta
+            if grassy.contains(touchLocation){
+                if let lastTouchLocation = lastTouchLocation {
+                    let touchDelta = touchLocation - lastTouchLocation
+                    grassy.position =  grassy.position + touchDelta
+                }
+                lastTouchLocation = touchLocation
+
+            } else if groundy.contains(touchLocation) {
+                if let lastTouchLocation = lastTouchLocation {
+                    let touchDelta = touchLocation - lastTouchLocation
+                    groundy.position =  groundy.position + touchDelta
+                }
+                lastTouchLocation = touchLocation
             }
-            lastTouchLocation = touchLocation
         }
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        isBeingDragged = false
+        isGrassBeingDragged = false
+        isGroundBeingDragged = false
         lastTouchLocation = nil
     }
-
-    //    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-    //        guard let touch = touches.first else { return }
-    //        let location = touch.location(in: self)
-    //        let grass = SKSpriteNode(texture:  SKTexture(imageNamed: "grass"), size: CGSize(width: 100, height: 100))
-    //        grass.position = location
-    //        grass.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 100, height: 100))
-    //        addChild(grass)
-    //    }
 
 }
 

@@ -56,6 +56,6 @@ class CharacterAnimation: SKScene {
                                       timePerFrame: 0.5 / TimeInterval(textures.count),
                                       resize: true,
                                       restore: true)
-        characterNode?.run(SKAction.repeat(action, count: 18))
+        characterNode?.run(SKAction.repeat(action, count: 12))
     }
 }
