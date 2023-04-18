@@ -47,9 +47,9 @@ class PlayerNode: SKNode {
     public func changeAnimation(to state: PlayerAnimationState) {
         switch state {
         case .idle:
-            sprite.run(.repeatForever(.animate(with: .init(withFormat: "pixil-frame-%@", range: 0...0), timePerFrame: 0.1)))
+            sprite.run(.repeatForever(.animate(with: .init(withFormat: "player%@", range: 0...0), timePerFrame: 0.1)))
         case .walk:
-            sprite.run(.repeatForever(.animate(with: .init(withFormat: "pixil-frame-%@", range: 0...4), timePerFrame: 0.1)))
+            sprite.run(.repeatForever(.animate(with: .init(withFormat: "player%@", range: 0...3), timePerFrame: 0.1)))
         }
     }
 

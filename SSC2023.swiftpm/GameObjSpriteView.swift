@@ -11,7 +11,7 @@ import SpriteKit
 class GameObjSpriteView: SKScene {
     let newTexture = SKTexture(imageNamed: "grass")
     let background = SKSpriteNode(texture:  SKTexture(imageNamed: "backgroundSpriteView"), size: CGSize(width: 900, height: 900))
-    var framey = SKSpriteNode()
+    var player = PlayerNode()
     var touchLocation = CGPoint()
     var nodeBeingDragged: SKNode?
     var nodesToChange: [SKNode] = []
@@ -22,10 +22,10 @@ class GameObjSpriteView: SKScene {
         background.position = CGPoint(x: 450, y: 450)
         addChild(background)
 
-        framey = SKSpriteNode(texture:  SKTexture(imageNamed: "frame"), size: CGSize(width: 100, height: 100))
-        framey.position = CGPoint(x: 450, y: 600)
-        framey.zPosition = 5
-        addChild(framey)
+        //player = SKSpriteNode(texture:  SKTexture(imageNamed: "frame"), size: CGSize(width: 100, height: 100))
+        player.position = CGPoint(x: 450, y: 600)
+        player.zPosition = 5
+        addChild(player)
 
         var createCount = 9
         var position = 50
@@ -57,7 +57,7 @@ class GameObjSpriteView: SKScene {
             let touchedNodes = nodes(at: touchLocation)
 
             for node in touchedNodes {
-                if node == framey {
+                if node == player {
                     isBeingDragged = true
                 }
                 else if let spriteNode = node as? SKSpriteNode {
@@ -69,7 +69,7 @@ class GameObjSpriteView: SKScene {
 
             if let lastTouchLocation = lastTouchLocation {
                 let touchDelta = touchLocation - lastTouchLocation
-                framey.position =  framey.position + touchDelta
+                player.position =  player.position + touchDelta
             }
             lastTouchLocation = touchLocation
         }

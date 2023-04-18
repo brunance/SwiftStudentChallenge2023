@@ -11,6 +11,7 @@ import SpriteKit
 class PhysicsTwoSpriteView: SKScene {
     let newTexture = SKTexture(imageNamed: "grass")
     let background = SKSpriteNode(texture:  SKTexture(imageNamed: "backgroundSpriteView"), size: CGSize(width: 900, height: 900))
+    var player = PlayerNode()
     var grassy = SKSpriteNode()
     var groundy = SKSpriteNode()
     var touchLocation = CGPoint()
@@ -59,7 +60,7 @@ class PhysicsTwoSpriteView: SKScene {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         let location = touch.location(in: self)
-        let box = SKSpriteNode(texture:  SKTexture(imageNamed: "grass"), size: CGSize(width: 100, height: 100))
+        let box = SKSpriteNode(texture:  SKTexture(imageNamed: "player0"), size: CGSize(width: 100, height: 100))
         box.position = location
         box.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 100, height: 100))
         addChild(box)

@@ -11,6 +11,7 @@ import SpriteKit
 class PhysicsOneSpriteView: SKScene {
     let newTexture = SKTexture(imageNamed: "grass")
     let background = SKSpriteNode(texture:  SKTexture(imageNamed: "backgroundSpriteView"), size: CGSize(width: 900, height: 900))
+    var player = PlayerNode()
     var grassy = SKSpriteNode()
     var groundy = SKSpriteNode()
     var touchLocation = CGPoint()
@@ -25,10 +26,10 @@ class PhysicsOneSpriteView: SKScene {
         addChild(background)
 
         //character sprite here
-        grassy = SKSpriteNode(texture:  SKTexture(imageNamed: "grass"), size: CGSize(width: 100, height: 100))
-        grassy.position = CGPoint(x: 450, y: 600)
-        grassy.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 100, height: 100))
-        addChild(grassy)
+        //grassy = SKSpriteNode(texture:  SKTexture(imageNamed: "grass"), size: CGSize(width: 100, height: 100))
+        player.position = CGPoint(x: 450, y: 600)
+        player.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 100, height: 100))
+        addChild(player)
 
         var createCount = 9
         var position = 50
@@ -53,13 +54,4 @@ class PhysicsOneSpriteView: SKScene {
         nodeFrame.name = "blockTop"
         addChild(nodeFrame)
     }
-
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        guard let touch = touches.first else { return }
-//        let location = touch.location(in: self)
-//        let box = SKSpriteNode(color: .red, size: CGSize(width: 100, height: 100))
-//        box.position = location
-//        box.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 100, height: 100))
-//        addChild(box)
-//    }
 }
