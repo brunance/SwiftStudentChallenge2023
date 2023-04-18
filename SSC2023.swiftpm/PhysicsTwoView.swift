@@ -22,7 +22,7 @@ struct PhysicsTwoView: View {
         return scene
     }
 
-    var characterAnimation = CharacterAnimation()
+    var characterAnimation = PlayerAnimation()
 
     var body: some View {
         ZStack {
@@ -86,7 +86,7 @@ struct PhysicsTwoView: View {
                 }
                 .padding(.top, 20)
 
-                NavigationLink("", destination:  MenuView(), isActive: $newView)
+                NavigationLink("", destination:  MovementView(), isActive: $newView)
             }
         }
     }

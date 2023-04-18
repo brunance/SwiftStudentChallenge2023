@@ -26,7 +26,6 @@ class PhysicsOneSpriteView: SKScene {
 
         //character sprite here
         grassy = SKSpriteNode(texture:  SKTexture(imageNamed: "grass"), size: CGSize(width: 100, height: 100))
-        grassy = SKSpriteNode(texture:  SKTexture(imageNamed: "grass"), size: CGSize(width: 100, height: 100))
         grassy.position = CGPoint(x: 450, y: 600)
         grassy.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 100, height: 100))
         addChild(grassy)

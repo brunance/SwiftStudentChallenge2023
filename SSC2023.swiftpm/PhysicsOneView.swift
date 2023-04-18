@@ -22,7 +22,7 @@ struct PhysicsOneView: View {
         return scene
     }
 
-    var characterAnimation = CharacterAnimation()
+    var characterAnimation = PlayerAnimation()
 
     var body: some View {
         ZStack {

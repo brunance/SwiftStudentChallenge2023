@@ -22,7 +22,7 @@ struct GameObjView: View {
         return scene
     }
 
-    var characterAnimation = CharacterAnimation()
+    var characterAnimation = PlayerAnimation()
 
     var body: some View {
         ZStack {
@@ -42,7 +42,7 @@ struct GameObjView: View {
                         Text(getCurrentText())
                             .font(CustomFont().getFont(size: 20))
                             .onAppear {
-                                let totalTime = 6.0
+                                let totalTime = 5.0
                                 let charCount = Double(TextData.gameObjText[self.currentTextIndex].text.count)
                                 let interval = totalTime / charCount
                                 let timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { _ in
