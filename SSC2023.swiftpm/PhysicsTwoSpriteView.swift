@@ -9,27 +9,14 @@ import Foundation
 import SpriteKit
 
 class PhysicsTwoSpriteView: SKScene {
-    let newTexture = SKTexture(imageNamed: "grass")
+
     let background = SKSpriteNode(texture:  SKTexture(imageNamed: "backgroundSpriteView"), size: CGSize(width: 900, height: 900))
     var player = PlayerNode()
-    var grassy = SKSpriteNode()
-    var groundy = SKSpriteNode()
-    var touchLocation = CGPoint()
-    var nodeBeingDragged: SKNode?
-    var nodesToChange: [SKNode] = []
-    var isBeingDragged = false
-    var lastTouchLocation: CGPoint?
 
     override func didMove(to view: SKView) {
         physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
         background.position = CGPoint(x: 450, y: 450)
         addChild(background)
-
-//        grassy = SKSpriteNode(texture:  SKTexture(imageNamed: "grass"), size: CGSize(width: 100, height: 100))
-//        grassy = SKSpriteNode(texture:  SKTexture(imageNamed: "grass"), size: CGSize(width: 100, height: 100))
-//        grassy.position = CGPoint(x: 450, y: 600)
-//        grassy.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 100, height: 100))
-//        addChild(grassy)
 
         var createCount = 9
         var position = 50

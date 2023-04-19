@@ -49,7 +49,7 @@ class PlayerAnimation: SKScene {
         }
         return textures
     }
-
+    
     public func runAnim(emotion: String) {
         let textures: [SKTexture] = getTextures(with: emotion, textureAtlasName: "Character")
         let action = SKAction.animate(with: textures,

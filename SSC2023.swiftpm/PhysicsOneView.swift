@@ -10,7 +10,7 @@ import SwiftUI
 import SpriteKit
 
 struct PhysicsOneView: View {
-    @State private var value = 0
+
     @State private var newView = false
     @State private var currentTextIndex = 0
     @State private var currentTextCount = 0
@@ -42,7 +42,7 @@ struct PhysicsOneView: View {
                         Text(getCurrentText())
                             .font(CustomFont().getFont(size: 20))
                             .onAppear {
-                                let totalTime = 5.0
+                                let totalTime = 4.0
                                 let charCount = Double(TextData.physicsOneText[self.currentTextIndex].text.count)
                                 let interval = totalTime / charCount
                                 let timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { _ in

@@ -18,7 +18,6 @@ class AssetSpriteView: SKScene {
     var groundy = SKSpriteNode()
     var touchLocation = CGPoint()
     var nodeBeingDragged: SKNode?
-    var nodesToChange: [SKNode] = []
     var isGrassBeingDragged = false
     var isGroundBeingDragged = false
     var lastTouchLocation: CGPoint?

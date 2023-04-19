@@ -1,15 +1,14 @@
 //
-//  AboutGameObj.swift
+//  AboutStepThree.swift
 //  SSC2023
 //
-//  Created by Bruno França do Prado on 17/04/23.
+//  Created by Bruno França do Prado on 19/04/23.
 //
 
-import Foundation
 import SwiftUI
 import SpriteKit
 
-struct AboutGameObj: View {
+struct AboutStepThree: View {
     @State private var currentTextIndex = 0
     @State private var currentTextCount = 0
     @State private var newView = false
@@ -34,11 +33,11 @@ struct AboutGameObj: View {
                         Text(getCurrentText())
                             .font(CustomFont().getFont(size: 20))
                             .onAppear {
-                                let totalTime = 5.0
-                                let charCount = Double(TextData.aboutGameObjText[self.currentTextIndex].text.count)
+                                let totalTime = 4.0
+                                let charCount = Double(TextData.aboutStepThreeText[self.currentTextIndex].text.count)
                                 let interval = totalTime / charCount
                                 let timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { _ in
-                                    if self.currentTextCount < TextData.aboutGameObjText[self.currentTextIndex].text.count {
+                                    if self.currentTextCount < TextData.aboutStepThreeText[self.currentTextIndex].text.count {
                                         self.currentTextCount += 1
                                     }
                                 }
@@ -47,9 +46,9 @@ struct AboutGameObj: View {
 
                         HStack {
                             Button(action: {
-                                self.currentTextIndex = (self.currentTextIndex + 1) % TextData.aboutGameObjText.count
+                                self.currentTextIndex = (self.currentTextIndex + 1) % TextData.aboutStepThreeText.count
                                 self.currentTextCount = 0
-                                characterAnimation.runAnim(emotion: TextData.aboutGameObjText[currentTextIndex].emotion)
+                                characterAnimation.runAnim(emotion: TextData.aboutStepThreeText[currentTextIndex].emotion)
                             }){
                                 Image("textdone")
                                     .resizable()
@@ -73,13 +72,13 @@ struct AboutGameObj: View {
                 .padding(.top, 50)
                 .navigationBarBackButtonHidden()
 
-                NavigationLink("", destination:  GameObjView(), isActive: $newView)
+                NavigationLink("", destination:  MovementView(), isActive: $newView)
             }
         }
     }
 
     func getCurrentText() -> String {
-        let currentText = TextData.aboutGameObjText[self.currentTextIndex].text
+        let currentText = TextData.aboutStepThreeText[self.currentTextIndex].text
         let endIndex = currentText.index(currentText.startIndex, offsetBy: self.currentTextCount)
         return String(currentText[..<endIndex])
     }

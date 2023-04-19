@@ -9,12 +9,11 @@ import Foundation
 import SpriteKit
 
 class GameObjSpriteView: SKScene {
-    let newTexture = SKTexture(imageNamed: "grass")
+    
     let background = SKSpriteNode(texture:  SKTexture(imageNamed: "backgroundSpriteView"), size: CGSize(width: 900, height: 900))
     var player = PlayerNode()
     var touchLocation = CGPoint()
     var nodeBeingDragged: SKNode?
-    var nodesToChange: [SKNode] = []
     var isBeingDragged = false
     var lastTouchLocation: CGPoint?
 
@@ -22,7 +21,6 @@ class GameObjSpriteView: SKScene {
         background.position = CGPoint(x: 450, y: 450)
         addChild(background)
 
-        //player = SKSpriteNode(texture:  SKTexture(imageNamed: "frame"), size: CGSize(width: 100, height: 100))
         player.position = CGPoint(x: 450, y: 600)
         player.zPosition = 5
         addChild(player)

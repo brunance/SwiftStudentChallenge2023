@@ -18,6 +18,9 @@ struct MenuView: View {
                 Image("background2")
 
                 VStack {
+                    Image("logo")
+                        .resizable()
+                        .frame(width: 400, height: 400)
                     Text("Oi lindos")
                     Button(action: { newView = true }) {
                         Image("button")
@@ -26,7 +29,7 @@ struct MenuView: View {
                     }
                     .padding(.top, 20)
                 }
-                NavigationLink("", destination:  AboutAssetView(), isActive: $newView)
+                NavigationLink("", destination:  AboutStepOne(), isActive: $newView)
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())

@@ -15,15 +15,12 @@ public enum PlayerAnimationState {
 class PlayerNode: SKNode {
 
     let sprite: SKSpriteNode
-    var direction = 0
-    var maxSpeed: CGFloat = 200
 
     override init() {
-        self.sprite = SKSpriteNode(imageNamed: "grass")
+        self.sprite = SKSpriteNode(imageNamed: "player0")
         self.sprite.texture?.filteringMode = .nearest
         self.sprite.size = CGSize(width: 100, height: 100)
         super.init()
-
         self.addChild(sprite)
         changeAnimation(to: .idle)
     }

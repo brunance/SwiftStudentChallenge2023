@@ -23,7 +23,6 @@ class MovementSpriteView: SKScene, UIGestureRecognizerDelegate {
         background.position = CGPoint(x: 450, y: 450)
         addChild(background)
 
-        //player = SKSpriteNode(texture:  SKTexture(imageNamed: "grass"), size: CGSize(width: 100, height: 100))
         player.position = CGPoint(x: 450, y: 600)
         player.zPosition = 5
         player.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 100, height: 100))
@@ -46,17 +45,12 @@ class MovementSpriteView: SKScene, UIGestureRecognizerDelegate {
             self.player.xScale = direction
             self.player.position.x += self.direction * velocity
         }
-
-//        if player.position.x > 384 {
-//            view?.presentScene(DragginScene.newScene())
-//        }
     }
 
     func setupControls() {
         longPress.addTarget(self, action: #selector(walk))
         longPress.delegate = self
         longPress.minimumPressDuration = 0.01
-
         view!.addGestureRecognizer(longPress)
     }
 
@@ -85,7 +79,7 @@ class MovementSpriteView: SKScene, UIGestureRecognizerDelegate {
         nodeFrame.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 100, height: 100))
         addChild(nodeFrame)
     }
-
+    
     func addInRangeSecondRow(addPosition : CGFloat) {
         let nodeFrame = SKSpriteNode(texture:  SKTexture(imageNamed: "grass"), size: CGSize(width: 100, height: 100))
         nodeFrame.position = CGPoint(x: addPosition, y: 150)
