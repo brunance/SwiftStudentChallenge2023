@@ -64,6 +64,16 @@ struct AboutStepThree: View {
                     .padding(.top, 25)
                 }
 
+                ZStack {
+                    Image("titleframe")
+                        .resizable()
+                        .frame(width: 910, height: 300)
+                        .padding(.top, 50)
+                    Text("Lesson 03/03 - movement and animation")
+                        .font(CustomFont().getFont(size: 30))
+                        .padding(.bottom, 160)
+                }
+
                 Button(action: { newView = true }) {
                     Image("button")
                         .resizable()

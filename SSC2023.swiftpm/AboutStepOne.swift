@@ -65,6 +65,16 @@ struct AboutStepOne: View {
                     .padding(.top, 25)
                 }
 
+                ZStack {
+                    Image("titleframe")
+                        .resizable()
+                        .frame(width: 910, height: 300)
+                        .padding(.top, 50)
+                    Text("Lesson 01/03 - sprites and assets")
+                        .font(CustomFont().getFont(size: 30))
+                        .padding(.bottom, 160)
+                }
+
                 Button(action: { newView = true }) {
                     Image("button")
                         .resizable()

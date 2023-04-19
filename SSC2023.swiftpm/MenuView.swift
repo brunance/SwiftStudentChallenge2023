@@ -33,6 +33,7 @@ struct MenuView: View {
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
+        .navigationBarBackButtonHidden()
     }
 
     struct MenuView_Previews: PreviewProvider {

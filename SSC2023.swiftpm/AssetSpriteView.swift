@@ -27,12 +27,12 @@ class AssetSpriteView: SKScene {
         addChild(background)
 
         grassy = SKSpriteNode(texture:  SKTexture(imageNamed: "grass"), size: CGSize(width: 100, height: 100))
-        grassy.position = CGPoint(x: 650, y: 600)
+        grassy.position = CGPoint(x: 550, y: 650)
         grassy.zPosition = 5
         addChild(grassy)
 
         groundy = SKSpriteNode(texture:  SKTexture(imageNamed: "ground"), size: CGSize(width: 100, height: 100))
-        groundy.position = CGPoint(x: 250, y: 600)
+        groundy.position = CGPoint(x: 350, y: 650)
         groundy.zPosition = 5
         addChild(groundy)
 
