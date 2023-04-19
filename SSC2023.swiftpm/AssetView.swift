@@ -53,7 +53,7 @@ struct AssetView: View {
                             }){
                                 Image("textdone")
                                     .resizable()
-                                    .frame(width: 25, height: 25)
+                                    .frame(width: 40, height: 40)
                             }
                             .frame(width: 50, height: 50)
                         }
