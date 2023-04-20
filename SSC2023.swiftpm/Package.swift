@@ -8,19 +8,19 @@ import PackageDescription
 import AppleProductTypes
 
 let package = Package(
-    name: "SSC2023",
+    name: "Pixel Playground",
     platforms: [
         .iOS("15.2")
     ],
     products: [
         .iOSApplication(
-            name: "SSC2023",
+            name: "Pixel Playground",
             targets: ["AppModule"],
             bundleIdentifier: "com.brunance.SSC2023",
             teamIdentifier: "YP9Q3ST2DG",
             displayVersion: "1.0",
             bundleVersion: "1",
-            appIcon: .placeholder(icon: .cloud),
+            appIcon: .asset("AppIcon"),
             accentColor: .presetColor(.red),
             supportedDeviceFamilies: [
                 .pad,
