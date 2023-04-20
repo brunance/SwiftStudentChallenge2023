@@ -69,12 +69,11 @@ struct AboutStepTwo: View {
                 ZStack {
                     Image("titleframe")
                         .resizable()
-                        .frame(width: 910, height: 300)
-                        .padding(.top, 50)
+                        .frame(width: 910, height: 180)
                     Text("Lesson 02/03 - game objects and physics")
                         .font(CustomFont().getFont(size: 30))
-                        .padding(.bottom, 160)
                 }
+                .padding(.top, 50)
 
                 Button(action: { newView = true }) {
                     Image("button")

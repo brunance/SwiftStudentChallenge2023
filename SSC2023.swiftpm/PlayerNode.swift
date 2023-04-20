@@ -29,17 +29,17 @@ class PlayerNode: SKNode {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public func setupBody(){
-        let body = SKPhysicsBody(rectangleOf: sprite.size)
-        body.restitution = 0
-        body.mass = 0.1
-        body.linearDamping = 3
-        body.allowsRotation = false
-        body.categoryBitMask = 1 << 0
-        body.collisionBitMask = 1 << 0
-        body.contactTestBitMask = 1 << 1
-        sprite.physicsBody = body
-    }
+//    public func setupBody(){
+//        let body = SKPhysicsBody(rectangleOf: sprite.size)
+//        body.restitution = 0
+//        body.mass = 0.1
+//        body.linearDamping = 3
+//        body.allowsRotation = false
+//        body.categoryBitMask = 1 << 0
+//        body.collisionBitMask = 1 << 0
+//        body.contactTestBitMask = 1 << 1
+//        sprite.physicsBody = body
+//    }
 
     public func changeAnimation(to state: PlayerAnimationState) {
         switch state {

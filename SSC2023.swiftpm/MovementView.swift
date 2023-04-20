@@ -85,7 +85,7 @@ struct MovementView: View {
                 }
                 .padding(.top, 20)
 
-                NavigationLink("", destination:  MenuView(), isActive: $newView)
+                NavigationLink("", destination:  EndView(), isActive: $newView)
             }
         }
     }

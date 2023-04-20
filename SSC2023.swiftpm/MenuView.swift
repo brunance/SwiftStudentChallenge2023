@@ -15,30 +15,24 @@ struct MenuView: View {
         NavigationView {
 
             ZStack {
-                Image("background2")
+                Image("background-menu")
 
                 VStack {
                     Image("logo")
                         .resizable()
-                        .frame(width: 400, height: 400)
-                    Text("Oi lindos")
+                        .frame(width: 1024, height: 924)
+
                     Button(action: { newView = true }) {
-                        Image("button")
+                        Image("menu-button")
                             .resizable()
-                            .frame(width: 100, height: 100)
+                            .frame(width: 256, height: 128)
                     }
-                    .padding(.top, 20)
                 }
-                NavigationLink("", destination:  AboutStepOne(), isActive: $newView)
+                .padding(.bottom, 310)
+                NavigationLink("", destination:  InstructionsView(), isActive: $newView)
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .navigationBarBackButtonHidden()
-    }
-
-    struct MenuView_Previews: PreviewProvider {
-        static var previews: some View {
-            MenuView()
-        }
     }
 }
