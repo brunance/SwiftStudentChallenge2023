@@ -8,20 +8,20 @@ import PackageDescription
 import AppleProductTypes
 
 let package = Package(
-    name: "SSC2023",
+    name: "Pixel Playground",
     platforms: [
         .iOS("15.2")
     ],
     products: [
         .iOSApplication(
-            name: "SSC2023",
+            name: "Pixel Playground",
             targets: ["AppModule"],
             bundleIdentifier: "com.brunance.SSC2023",
             teamIdentifier: "YP9Q3ST2DG",
             displayVersion: "1.0",
             bundleVersion: "1",
-            appIcon: .placeholder(icon: .images),
-            accentColor: .presetColor(.blue),
+            appIcon: .asset("AppIcon"),
+            accentColor: .presetColor(.red),
             supportedDeviceFamilies: [
                 .pad,
                 .phone
@@ -31,13 +31,17 @@ let package = Package(
                 .landscapeRight,
                 .landscapeLeft,
                 .portraitUpsideDown(.when(deviceFamilies: [.pad]))
-            ]
+            ],
+            appCategory: .games
         )
     ],
     targets: [
         .executableTarget(
             name: "AppModule",
-            path: "."
+            path: ".",
+            resources: [
+                .process("Resources")
+            ]
         )
     ]
 )
